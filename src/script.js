@@ -43,7 +43,7 @@ particlesGeometry.setAttribute(
 )
 
 const particlesMaterial = new THREE.PointsMaterial({
-    size: 0.06,
+    size: 0.08,
     sizeAttenuation: true,
     color:"#ff88cc",
     transparent: true,
@@ -85,7 +85,7 @@ window.addEventListener('resize', () =>
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.position.z = 3
+camera.position.z = 8
 scene.add(camera)
 
 // Controls
@@ -113,6 +113,14 @@ const tick = () =>
     particles.rotation.y = elapsedTime * 0.05
     // Update controls
     controls.update()
+
+    for(let i = 0; i < count; i++){
+        const i3 = i * 1
+        const x = particlesGeometry.attributes.position.array[i3]
+        particlesGeometry.attributes.position.array[i3+3] = Math.cos(elapsedTime + x )
+    }
+
+    particlesGeometry.attributes.position.needsUpdate = true
 
     // Render
     renderer.render(scene, camera)
