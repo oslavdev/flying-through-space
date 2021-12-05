@@ -41,7 +41,8 @@ const particlesMaterial = new THREE.PointsMaterial({
     color:"#ff88cc",
     transparent: true,
     alphaMap: partcileTexture,
-    alphaTest: 0.001
+    alphaTest: 0.001,
+    depthWrite: true
 })
 const particles = new THREE.Points(particlesGeometry, particlesMaterial)
 scene.add(particles)
