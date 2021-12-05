@@ -85,7 +85,7 @@ window.addEventListener('resize', () =>
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.position.z = 2
+camera.position.z = 3
 scene.add(camera)
 
 // Controls
@@ -110,7 +110,7 @@ const speed = - 0.001;
 const tick = () =>
 {
     const elapsedTime = clock.getElapsedTime()
-
+    particles.rotation.y = elapsedTime * 0.05
     // Update controls
     controls.update()
 
