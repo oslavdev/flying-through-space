@@ -1,7 +1,6 @@
 import './style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import * as dat from 'lil-gui'
 
 
 // Canvas
@@ -127,6 +126,13 @@ const tick = () =>
     camera.translateZ(speed)
     // Call tick again on the next frame
     window.requestAnimationFrame(tick)
+}
+
+const audio = new Audio('/nocturne.mp3');
+document.addEventListener('click', musicPlay);
+function musicPlay() {
+    audio.play();
+    document.removeEventListener('click', musicPlay);
 }
 
 tick()
